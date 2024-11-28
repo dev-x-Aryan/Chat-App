@@ -13,7 +13,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6
+        minlength: 8
     },
     profilePic: {
         type: String,
@@ -21,4 +21,4 @@ const userSchema = new Schema({
     }
 },{timestamps: true})
 
-export const User = mongoose.model("User", userSChema);
+export const User = mongoose.model("User", userSchema);
