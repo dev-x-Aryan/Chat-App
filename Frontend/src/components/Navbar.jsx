@@ -6,7 +6,7 @@ import { faGear, faUser, faPowerOff, faTimes, faBars } from '@fortawesome/free-s
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <nav className="w-full fixed top-0 left-0 bg-[#475053] shadow-lg px-4 sm:px-6 lg:px-8 h-8">
+    <nav className="w-full fixed top-0 left-0 bg-gray-900 shadow-lg px-4 sm:px-6 lg:px-8 h-8 border-none">
       <div className="flex justify-between items-center">
         <Link to="/" className="text-xl font-bold text-white">
             ChitChat
