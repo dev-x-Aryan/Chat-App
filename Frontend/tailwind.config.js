@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        floating: "floating 6s infinite ease-in-out",
-        floatingReverse: "floatingReverse 6s infinite ease-in-out",
+        floating: "floating 4s infinite ease-in-out",
+        floatingReverse: "floatingReverse 4s infinite ease-in-out",
         tileFloating: "tileFloating 8s infinite ease-in-out",
         tileFloatingReverse: "tileFloatingReverse 8s infinite ease-in-out",
       },

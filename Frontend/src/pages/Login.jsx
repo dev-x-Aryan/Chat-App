@@ -22,9 +22,14 @@ const Login = () => {
       <div className="absolute bottom-50 right-16 w-64 h-64 bg-blue-400  mix-blend-screen filter blur-[70px] opacity-50 animate-floating"></div>
       <div className="absolute bottom-10 left-1/4 w-64 h-64 bg-indigo-800 mix-blend-screen filter blur-[70px] opacity-50 animate-floatingReverse"></div>
 
+      <div className="absolute top-50 left-1/3 w-24 h-24 bg-white/10 backdrop-blur-md rounded-lg animate-tileFloating"></div>
+      <div className="absolute top-[120px] right-1/3 z-10 w-24 h-24 bg-white/10 backdrop-blur-md rounded-lg animate-tileFloatingReverse"></div>
+      <div className="absolute top-[120px] left-[600px] w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg animate-tileFloating"></div>
+      <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-white/10 backdrop-blur-md rounded-lg animate-tileFloatingReverse"></div>
+
       <div className="bg-white/10 backdrop-blur-2xl shadow-xl  rounded-2xl p-8 w-full max-w-sm">
         <h1 className="text-center text-2xl font-bold text-blue-400">Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-1.5">
             <div>
                 <label className="block text-base font-medium text-white">Email:</label>
                 <input
