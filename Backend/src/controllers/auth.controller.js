@@ -16,6 +16,7 @@ const signup = async(req,res)=>{
  
      const existingUser = await User.findOne({email})
      if(existingUser){
+        console.log(existingUser)
         return res.status(409).json({ message: "User with the same email already exists" })
      }
  

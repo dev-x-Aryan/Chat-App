@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
+import useSignup from '../hooks/useSignup'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -8,14 +9,14 @@ const Signup = () => {
     password:"",
     confirmPassword:""
   })
-
+  const {signup} = useSignup()
   const [error,setError] = useState("")
 
   const handleChange = (e) =>{
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
 
     if(formData.password !== formData.confirmPassword){
@@ -23,6 +24,8 @@ const Signup = () => {
       return;
     }
     setError("");
+
+    await signup(formData.name, formData.email, formData.password)
   }
 
   return (
