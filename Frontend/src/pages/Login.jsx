@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({
@@ -7,12 +8,15 @@ const Login = () => {
         password: "" 
     })
 
+    const {login} = useLogin();
+
     const handleChange = (e) =>{
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault();
+        await login(loginData.email, loginData.password)
     }
 
 
