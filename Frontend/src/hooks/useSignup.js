@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../contexts/authContext"
 import axios from "axios"
+import toast from "react-hot-toast";
 
 
 const useSignup = () =>{
@@ -11,12 +12,15 @@ const useSignup = () =>{
                 name,
                 email,
                 password
-            })
+            },{withCredentials: true})
+            if(response.status === 201){
+                toast.success(response.data.message);
+            }
             setUser(response.data);
             console.log(response.data);
             localStorage.setItem("user", JSON.stringify(response.data.user));
         }catch(error){
-            console.log("Signup error", error.response.data.message);
+            toast.error(error.response.data.message);
         }
     }
     
