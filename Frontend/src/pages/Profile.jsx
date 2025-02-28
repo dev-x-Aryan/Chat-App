@@ -10,18 +10,18 @@ const Profile = () => {
   const [profilePic, setProfilePic] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Fetch user profile on mount
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
         console.log("Fetching profile...");  // Debugging
-        const { data } = await axios.get("http://localhost:5001/api/auth/profile", {
+        const response = await axios.get("http://localhost:5001/api/auth/profile", {
           withCredentials: true,  // Ensure cookies are sent
         });
   
-        console.log("Profile Data:", data);  // Debugging
-        setUser(data);
-        setProfilePic(data.profilePicture);
+        console.log("Profile Data:", response.data);  // Debugging
+        setUser(response.data);
+        setProfilePic(response.data.profilePicture);
       } catch (error) {
         console.log("Error fetching user:", error);  // Debugging
         toast.error("Failed to load profile");
@@ -50,7 +50,7 @@ const Profile = () => {
       await axios.put(
         "http://localhost:5001/api/auth/profile",
         { profilePicture: imageUrl },
-        { withCredentials: true }
+        { withCredentials: true, }
       );
 
       toast.success("Profile picture updated");
@@ -71,7 +71,7 @@ const Profile = () => {
         <div className="mt-3 flex justify-center items-center">
           <div className="relative">
             <img
-              src={profilePic || "https://via.placeholder.com/150"}
+              src={profilePic || "Frontend/src/assets/istockphoto-1495088043-612x612.jpg"}
               alt="Profile"
               className="rounded-full w-32 h-32 border-2 border-blue-400"
             />
