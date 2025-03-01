@@ -14,12 +14,12 @@ const Profile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log("Fetching profile...");  // Debugging
+        // console.log("Fetching profile...");  // Debugging
         const response = await axios.get("http://localhost:5001/api/auth/profile", {
           withCredentials: true,  // Ensure cookies are sent
         });
   
-        console.log("Profile Data:", response.data);  // Debugging
+        // console.log("Profile Data:", response.data);  // Debugging
         setUser(response.data);
         setProfilePic(response.data.profilePicture);
       } catch (error) {
@@ -65,6 +65,10 @@ const Profile = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="absolute top-10 left-40 w-64 h-64 bg-violet-600  mix-blend-screen filter blur-[70px] opacity-50 animate-floating"></div>
+      <div className="absolute bottom-50 right-16 w-64 h-64 bg-blue-400  mix-blend-screen filter blur-[70px] opacity-50 animate-floating"></div>
+      <div className="absolute bottom-10 left-1/4 w-64 h-64 bg-indigo-800 mix-blend-screen filter blur-[70px] opacity-50 animate-floatingReverse"></div>
+
       <div className="bg-white/10 backdrop-blur-2xl shadow-xl rounded-2xl p-8 w-full max-w-sm">
         <h1 className="text-center text-2xl font-bold text-blue-400">My Profile</h1>
 
@@ -82,9 +86,9 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="mt-4 text-center">
-          <h2 className="text-xl font-bold text-blue-400">Name: {user?.name || "Guest"}</h2>
-          <h2 className="text-xl font-bold text-blue-400">Email: {user?.email || "Not available"}</h2>
+        <div className="mt-4 text-left">
+          <h2 className="text-lg font-bold text-blue-400">Name: {user?.name || "Guest"}</h2>
+          <h2 className="text-lg font-bold text-blue-400">Email: {user?.email || "Not available"}</h2>
         </div>
 
         {loading && <p className="text-center text-sm text-gray-400 mt-2">Updating profile picture...</p>}

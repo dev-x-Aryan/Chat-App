@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken"
 import { User } from "../models/user.model.js"
 
 export const verifyRoute = async (req, res, next) => {
-    console.log("Middleware triggered!"); 
+    // console.log("Middleware triggered!"); 
     try {
-        console.log("Cookies Received:", req.cookies);  // Debugging
+        // console.log("Cookies Received:", req.cookies);  // Debugging
 
         const token = req.cookies?.jwt;  // Ensure cookies exist
         if (!token) {
@@ -14,7 +14,7 @@ export const verifyRoute = async (req, res, next) => {
 
         // Verify JWT Token
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        console.log(" Decoded Token:", decoded);
+        // console.log(" Decoded Token:", decoded);
 
         // Find User
         const user = await User.findById(decoded.userId).select("-password");

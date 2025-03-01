@@ -98,8 +98,8 @@ const logout = (req,res)=>{
 
 const getProfile = async (req, res) => {
     try {
-        console.log("Middleware triggered ");
-        console.log("Request Method:", req.method);
+        // console.log("Middleware triggered ");
+        // console.log("Request Method:", req.method);
         console.log("Request Body:", req.body);
 
         if (!req.user) {
@@ -116,11 +116,11 @@ const getProfile = async (req, res) => {
 
         if (req.method === "PUT") {
             // Update profile picture
-            if (!req.body.pfp) {
+            if (!req.body.profilePicture) {
                 return res.status(400).json({ message: "No profile picture received" });
             }
 
-            const uploadPfp = await cloudinary.uploader.upload(req.body.pfp, {
+            const uploadPfp = await cloudinary.uploader.upload(req.body.profilePicture, {
                 folder: "profile_pictures",
             });
 
