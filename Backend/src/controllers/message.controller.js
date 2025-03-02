@@ -24,7 +24,7 @@ const getMessage = async(req,res)=>{
             { senderId: myId, receiverId: userToChatId },
             { senderId: userToChatId, receiverId: myId },
           ],
-        });
+        }).sort({ createdAt: 1 })
     
         res.status(200).json(messages);
       } catch (error) {
@@ -35,6 +35,9 @@ const getMessage = async(req,res)=>{
 
 const sendMessage = async(req,res)=>{
     try {
+        console.log("🔹 Request received from:", req.user?._id);
+        console.log("🔹 Sending to:", req.params.id);
+        console.log("🔹 Message:", req.body.text);
         const { text, image } = req.body;
         const { id: receiverId } = req.params;
         const senderId = req.user._id;
@@ -50,6 +53,7 @@ const sendMessage = async(req,res)=>{
         receiverId,
         text,
         image: imageUrl,
+        createdAt: new Date(),
         });
 
         await newMessage.save();

@@ -7,12 +7,12 @@ const messageSchema = new Schema({
     image:{
         type: String,
     },
-    sender:{
+    senderId:{
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    receiver: {
+    receiverId: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
